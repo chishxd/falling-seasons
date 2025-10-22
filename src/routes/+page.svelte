@@ -34,6 +34,30 @@
 
 			if (currentIndex >= 0) {
 				gsap.set(sections[currentIndex].getNode(), { zIndex: 0 });
+				const currentSectionNode = sections[currentIndex].getNode();
+
+				tl.to(
+					currentSectionNode.querySelector('.section-heading'),
+					{
+						y: -80 * dFactor, // Move UP if scrolling down, DOWN if scrolling up
+						opacity: 0,
+						duration: 0.6,
+						ease: 'power2.in'
+					},
+					0
+				);
+
+				tl.to(
+					currentSectionNode.querySelector('.section-description'),
+					{
+						y: -50 * dFactor,
+						opacity: 0,
+						duration: 0.5,
+						ease: 'power2.in'
+					},
+					0.1
+				);
+
 				tl.to(
 					[outerWrappers[currentIndex], innerWrappers[currentIndex]],
 					{
@@ -53,10 +77,18 @@
 				0
 			);
 
+			gsap.set(
+				[
+					newSectionNode.querySelector('.section-heading'),
+					newSectionNode.querySelector('.section-description')
+				],
+				{ opacity: 1, y: 0 }
+			);
+
 			tl.from(
 				newSectionNode.querySelector('.section-heading'),
 				{
-					y: 80,
+					y: 80 * dFactor,
 					opacity: 0,
 					duration: 1.2,
 					ease: 'power3.out'
@@ -67,7 +99,7 @@
 			tl.from(
 				newSectionNode.querySelector('.section-description'),
 				{
-					y: 50,
+					y: 50 * dFactor,
 					opacity: 0,
 					duration: 0.8,
 					ease: 'power3.out'
