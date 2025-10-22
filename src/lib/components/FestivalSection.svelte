@@ -6,10 +6,15 @@
 
 	export let outerWrapper;
 	export let innerWrapper;
+
+	let sectionNode; // This will bind to the <section>
+	export function getNode() {
+		return sectionNode;
+	}
 </script>
 
 <section
-	bind:this={sectionElement}
+	bind:this={sectionNode}
 	class="flex min-h-dvh w-full flex-col items-center justify-center border-b-2 border-white/10 p-8 font-inter"
 >
 	<div bind:this={outerWrapper} class="outer">
