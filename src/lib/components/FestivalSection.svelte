@@ -25,9 +25,8 @@
 			    url({event.image});"
 			>
 				<div class="mx-auto max-w-2xl text-center text-white">
-					<div class="mb-4 text-4xl">🎨</div>
 					<h2 class="section-heading mb-4 text-4xl font-bold md:text-6xl">{event.season}</h2>
-					<p class="text-lg md:text-xl">{event.description}</p>
+					<p class="section-description text-lg md:text-xl">{event.description}</p>
 				</div>
 			</div>
 		</div>

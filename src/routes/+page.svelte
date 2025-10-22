@@ -53,6 +53,28 @@
 				0
 			);
 
+			tl.from(
+				newSectionNode.querySelector('.section-heading'),
+				{
+					y: 80,
+					opacity: 0,
+					duration: 1.2,
+					ease: 'power3.out'
+				},
+				0.3
+			);
+
+			tl.from(
+				newSectionNode.querySelector('.section-description'),
+				{
+					y: 50,
+					opacity: 0,
+					duration: 0.8,
+					ease: 'power3.out'
+				},
+				0.5
+			);
+
 			currentIndex = index;
 		}
 
