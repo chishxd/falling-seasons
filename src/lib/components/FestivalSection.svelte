@@ -15,7 +15,7 @@
 
 <section
 	bind:this={sectionNode}
-	class="flex min-h-dvh w-full flex-col items-center justify-center border-b-2 border-white/10 p-8 font-inter"
+	class="flex min-h-dvh w-full flex-col items-center justify-center border-b-2 border-white/10 font-inter"
 >
 	<div bind:this={outerWrapper} class="outer">
 		<div bind:this={innerWrapper} class="inner">

@@ -10,41 +10,6 @@
 	let outerWrappers = [];
 	let innerWrappers = [];
 
-	// let currentIndex = -1;
-	// let animating = false;
-
-	// function gotoSection(index, direction) {
-	// 	if (animating) return;
-
-	// 	index = wrap(index);
-	// 	animating = true;
-
-	// 	let fromTop = direction === -1;
-	// 	let dFactor = fromTop ? -1 : 1;
-
-	// 	let tl = gsap.timeline({
-	// 		defaults: { duration: 1.25, ease: 'power1.inOut' },
-	// 		onComplete: () => (animating = false)
-	// 	});
-
-	// 	if (currentIndex >= 0) {
-	// 		gsap.set(sections[currentIndex].getNode(), { zIndex: 0 });
-	// 		tl.set(sections[currentIndex].getNode(), { autoAlpha: 0 });
-	// 	}
-
-	// 	const newSectionNode = sections[index].getNode();
-	// 	gsap.set(newSectionNode, { autoAlpha: 1, zIndex: 1 });
-
-	// 	tl.fromTo(
-	// 		[outerWrappers[index], innerWrappers[index]],
-	// 		{ yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) },
-	// 		{ yPercent: 0 },
-	// 		0
-	// 	);
-
-	// 	currentIndex = index;
-	// }
-
 	onMount(() => {
 		let currentIndex = -1;
 		let animating = false;
@@ -69,7 +34,13 @@
 
 			if (currentIndex >= 0) {
 				gsap.set(sections[currentIndex].getNode(), { zIndex: 0 });
-				tl.set(sections[currentIndex].getNode(), { autoAlpha: 0 });
+				tl.to(
+					[outerWrappers[currentIndex], innerWrappers[currentIndex]],
+					{
+						yPercent: (i) => (i ? 100 * dFactor : -100 * dFactor)
+					},
+					0
+				);
 			}
 
 			const newSectionNode = sections[index].getNode();
