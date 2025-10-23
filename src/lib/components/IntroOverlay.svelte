@@ -1,3 +1,29 @@
+<script>
+	import { onMount, createEventDispatcher } from 'svelte';
+	import gsap from 'gsap';
+
+	const dispatch = createEventDispatcher();
+
+	let overlay;
+	let video1;
+	let video2;
+	let video3;
+
+	let line1, line2, line3, line4, line5, line6, line7, line8, line9;
+
+	function finishIntro() {
+		if (gsap.getProperty(overlay, 'opacity') === 0) return;
+
+		gsap.to(overlay, {
+			opacity: 0,
+			duration: 0.8,
+			onComplete: () => {
+				dispatch('finish');
+			}
+		});
+	}
+</script>
+
 <div bind:this={overlay} class="fixed inset-0 z-50 bg-black font-inter text-white">
 	<video
 		bind:this={video1}
@@ -21,7 +47,7 @@
 	<!-- dark overlay for video -->
 	<div class="absolute inset-0 bg-black/60"></div>
 
-    <!-- Container for text (I swear I wrote this myself) -->
+	<!-- Container for text (I swear I wrote this myself) -->
 	<div class="relative z-10 flex h-full w-full items-center justify-center p-8">
 		<div class="max-w-4xl text-center text-3xl leading-tight font-bold md:text-5xl">
 			<span bind:this={line1} class="line">Around the world, fall is a season of endings.</span>
