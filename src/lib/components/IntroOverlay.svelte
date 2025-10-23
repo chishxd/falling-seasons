@@ -22,6 +22,41 @@
 			}
 		});
 	}
+
+	// The MAIN Animation black
+	onMount(() => {
+		const tl = gsap.timeline({ onComplete: finishIntro });
+
+		// The First scene of Autumn
+		tl.to(video1, { opacity: 1, duration: 2 });
+		tl.from(line1, { opacity: 0, y: 20 }, '+=0.5');
+		tl.from(line2, { opacity: 0, y: 20 }, '+=1.5');
+		tl.to([line1, line2], { opacity: 0, duration: 1 }, '+=2.5');
+
+		// Second Scene of Monsoon
+		tl.to(video1, { opacity: 0, duration: 2 });
+		tl.to(video2, { opacity: 1, duration: 2.5 }, '<');
+		tl.from(line3, { opacity: 0, y: 20 }, '-=0.5');
+		tl.from(line4, { opacity: 0, y: 20 }, '+=1.5');
+		tl.to([line3, line4], { opacity: 0, y: 20 }, '+=2.5');
+
+		// Third Scene of Celebration
+		tl.to(video2, { opacity: 0, duration: 2 });
+		tl.to(video3, { opacity: 1, duration: 2.5 }, '<');
+		tl.from(line5, { opacity: 0, y: 20 }, '-=0.5');
+		tl.from(line6, { opacity: 0, y: 20 }, '+=2');
+		tl.to([line5, line6], { opacity: 0, duration: 1 }, '+=3');
+
+		// Climax Scene
+		tl.from(line7, { opacity: 0, y: 20 }, '+=0.5');
+		tl.from(line7, { opacity: 0, y: 20 }, '+=1');
+		tl.to([line7, line8], { opacity: 0, duration: 1 }, '+=3.5');
+
+		// The Final Title
+		tl.from(line9, { opacity: 0, scale: 0.8, duration: 2, ease: 'power2.out' });
+
+		tl.to({}, { duration: 4 });
+	});
 </script>
 
 <div bind:this={overlay} class="fixed inset-0 z-50 bg-black font-inter text-white">
