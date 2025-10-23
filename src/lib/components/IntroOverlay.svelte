@@ -134,7 +134,10 @@
 		display: block;
 		position: absolute;
 		width: 100%;
-		left: 0;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
 	}
 	video {
 		object-fit: cover;
