@@ -25,39 +25,49 @@
 
 	// The MAIN Animation black
 	onMount(() => {
-		// gsap.set([line1, line2, line3, line4, line5, line6, line7, line8, line9], { opacity: 0 });
+		const lineDisplayDuration = 2.5;
 
 		const tl = gsap.timeline({ onComplete: finishIntro });
 
 		// The First scene of Autumn
 		tl.to(video1, { opacity: 1, duration: 2 });
-		tl.from(line1, { opacity: 0, y: 20 }, '+=0.5');
-		tl.from(line2, { opacity: 0, y: 20 }, '+=1.5');
-		tl.to([line1, line2], { opacity: 0, duration: 1 }, '+=2.5');
+		tl.from(line1, { y: 20, opacity: 0 }).to(line1, { opacity: 0 }, `+=${lineDisplayDuration}`);
+		tl.from(line2, { y: 20, opacity: 0 }).to(line2, { opacity: 0 }, `+=${lineDisplayDuration}`);
 
 		// Second Scene of Monsoon
 		tl.to(video1, { opacity: 0, duration: 2 });
 		tl.to(video2, { opacity: 1, duration: 2.5 }, '<');
-		tl.from(line3, { opacity: 0, y: 20 }, '-=0.5');
-		tl.from(line4, { opacity: 0, y: 20 }, '+=1.5');
-		tl.to([line3, line4], { opacity: 0, duration: 1 }, '+=2.5');
+		tl.from(line3, { y: 20, opacity: 0 }, '-=0.5').to(
+			line3,
+			{ opacity: 0 },
+			`+=${lineDisplayDuration}`
+		);
+		tl.from(line4, { y: 20, opacity: 0 }).to(line4, { opacity: 0 }, `+=${lineDisplayDuration}`);
 
 		// Third Scene of Celebration
 		tl.to(video2, { opacity: 0, duration: 2 });
 		tl.to(video3, { opacity: 1, duration: 2.5 }, '<');
-		tl.from(line5, { opacity: 0, y: 20 }, '-=0.5');
-		tl.from(line6, { opacity: 0, y: 20 }, '+=2');
-		tl.to([line5, line6], { opacity: 0, duration: 1 }, '+=3');
+		tl.from(line5, { y: 20, opacity: 0 }, '-=0.5').to(
+			line5,
+			{ opacity: 0 },
+			`+=${lineDisplayDuration}`
+		);
+		tl.from(line6, { y: 20, opacity: 0 }).to(line6, { opacity: 0 }, `+=${lineDisplayDuration + 1}`);
 
+		// This one is for black screen to some better things
 		tl.to(video3, { opacity: 0, duration: 2.5 });
 
 		// Climax Scene
-		tl.from(line7, { opacity: 0, y: 20 }, '+=0.5');
-		tl.from(line8, { opacity: 0, y: 20 }, '+=1');
-		tl.to([line7, line8], { opacity: 0, duration: 1 }, '+=3.5');
+		tl.from(line7, { y: 20, opacity: 0 }, '-=0.5').to(
+			line7,
+			{ opacity: 0 },
+			`+=${lineDisplayDuration - 1}`
+		);
+		tl.from(line8, { y: 20, opacity: 0 }).to(line8, { opacity: 0 }, `+=${lineDisplayDuration + 2}`);
 
 		// The Final Title
-		tl.from(line9, { opacity: 0, scale: 0.8, duration: 2, ease: 'power2.out' });
+		tl.from(line9, { scale: 0.8, opacity: 0, duration: 2, ease: 'power2.out' });
+		tl.to({}, { duration: 4 });
 
 		tl.to({}, { duration: 4 });
 	});
