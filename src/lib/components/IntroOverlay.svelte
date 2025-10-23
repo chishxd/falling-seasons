@@ -64,19 +64,31 @@
 		bind:this={video1}
 		class="absolute h-full w-full object-cover opacity-0"
 		src="/videos/autumn.mp4"
-		><track kind="captions" autoplay muted loop playsinline />
+		autoplay
+		muted
+		loop
+		playsinline
+		><track kind="captions" />
 	</video>
 	<video
 		bind:this={video2}
 		class="absolute h-full w-full object-cover opacity-0"
 		src="/videos/monsoon.mp4"
-		><track kind="captions" autoplay muted loop playsinline />
+		autoplay
+		muted
+		loop
+		playsinline
+		><track kind="captions" />
 	</video>
 	<video
 		bind:this={video3}
 		class="absolute h-full w-full object-cover opacity-0"
 		src="/videos/celebration.mp4"
-		><track kind="captions" autoplay muted loop playsinline />
+		autoplay
+		muted
+		loop
+		playsinline
+		><track kind="captions" />
 	</video>
 
 	<!-- dark overlay for video -->
