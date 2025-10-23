@@ -9,10 +9,11 @@
 	let sections = [];
 	let outerWrappers = [];
 	let innerWrappers = [];
+	let introVisible = true;
 
-	let cleanUpAnimation = () => {};
+	let cleanupMainAnimation = () => {};
 
-	function startMainAnimations() {
+	function startMainAnimation() {
 		let currentIndex = -1;
 		let animating = false;
 
@@ -130,6 +131,16 @@
 			if (observer) observer.kill();
 		};
 	}
+
+	$: if (!introVisible) {
+		cleanupMainAnimation = startMainAnimation();
+	}
+
+	onMount(() => {
+		return () => {
+			cleanupMainAnimation();
+		};
+	});
 </script>
 
 <main class:opacity-0={introVisible} class="page-container snap-none bg-green-200">
