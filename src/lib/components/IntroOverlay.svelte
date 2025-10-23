@@ -73,3 +73,13 @@
 		Skip Intro
 	</button>
 </div>
+
+<style>
+	.line {
+		display: block;
+		opacity: 0;
+	}
+	video {
+		object-fit: cover;
+	}
+</style>
