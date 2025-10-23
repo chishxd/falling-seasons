@@ -5,6 +5,7 @@
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { onMount, tick } from 'svelte';
 	import Observer from 'gsap/Observer';
+	import IntroOverlay from '$lib/components/IntroOverlay.svelte';
 
 	let sections = [];
 	let outerWrappers = [];
