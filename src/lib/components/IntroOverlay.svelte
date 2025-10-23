@@ -39,4 +39,11 @@
 			<span bind:this={line9} class="line text-amber-300">Welcome to Fall in India.</span>
 		</div>
 	</div>
+
+	<button
+		on:click={finishIntro}
+		class="absolute right-8 bottom-8 z-20 rounded-lg bg-white/10 px-4 py-2 text-sm tracking-widest uppercase backdrop-blur-sm transition-colors hover:bg-white/20"
+	>
+		Skip Intro
+	</button>
 </div>
