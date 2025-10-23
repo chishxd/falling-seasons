@@ -25,6 +25,8 @@
 
 	// The MAIN Animation black
 	onMount(() => {
+		// gsap.set([line1, line2, line3, line4, line5, line6, line7, line8, line9], { opacity: 0 });
+
 		const tl = gsap.timeline({ onComplete: finishIntro });
 
 		// The First scene of Autumn
@@ -46,6 +48,8 @@
 		tl.from(line5, { opacity: 0, y: 20 }, '-=0.5');
 		tl.from(line6, { opacity: 0, y: 20 }, '+=2');
 		tl.to([line5, line6], { opacity: 0, duration: 1 }, '+=3');
+
+		tl.to(video3, { opacity: 0, duration: 2.5 });
 
 		// Climax Scene
 		tl.from(line7, { opacity: 0, y: 20 }, '+=0.5');
@@ -95,7 +99,7 @@
 	<div class="absolute inset-0 bg-black/60"></div>
 
 	<!-- Container for text (I swear I wrote this myself) -->
-	<div class="relative z-10 flex h-full w-full items-center justify-center p-8">
+	<div class="text-container relative z-10 flex h-full w-full items-center justify-center p-8">
 		<div class="max-w-4xl text-center text-3xl leading-tight font-bold md:text-5xl">
 			<span bind:this={line1} class="line">Around the world, fall is a season of endings.</span>
 			<span bind:this={line2} class="line">Of dried autumn leaves and pumpkin carvings.</span>
@@ -122,9 +126,15 @@
 </div>
 
 <style>
+	.text-container {
+		position: relative;
+	}
+
 	.line {
 		display: block;
-		opacity: 0;
+		position: absolute;
+		width: 100%;
+		left: 0;
 	}
 	video {
 		object-fit: cover;
