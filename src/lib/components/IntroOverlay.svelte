@@ -9,7 +9,7 @@
 	let video2;
 	let video3;
 
-	let line1, line2, line3, line4, line5, line6, line7, line8, line9;
+	let line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11;
 
 	function finishIntro() {
 		if (gsap.getProperty(overlay, 'opacity') === 0) return;
@@ -25,51 +25,45 @@
 
 	// The MAIN Animation black
 	onMount(() => {
-		const lineDisplayDuration = 2.5;
+		const shortPause = 2; // for quick lines
+		const longPause = 3; // for important lines
+		const finalPause = 4; // for the very end
 
 		const tl = gsap.timeline({ onComplete: finishIntro });
 
 		// The First scene of Autumn
 		tl.to(video1, { opacity: 1, duration: 2 });
-		tl.from(line1, { y: 20, opacity: 0 }).to(line1, { opacity: 0 }, `+=${lineDisplayDuration}`);
-		tl.from(line2, { y: 20, opacity: 0 }).to(line2, { opacity: 0 }, `+=${lineDisplayDuration}`);
+		tl.from(line1, { y: 20, opacity: 0 }).to(line1, { opacity: 0 }, `+=${longPause}`);
 
 		// Second Scene of Monsoon
 		tl.to(video1, { opacity: 0, duration: 2 });
 		tl.to(video2, { opacity: 1, duration: 2.5 }, '<');
-		tl.from(line3, { y: 20, opacity: 0 }, '-=0.5').to(
-			line3,
-			{ opacity: 0 },
-			`+=${lineDisplayDuration}`
-		);
-		tl.from(line4, { y: 20, opacity: 0 }).to(line4, { opacity: 0 }, `+=${lineDisplayDuration}`);
+		tl.from(line2, { y: 20, opacity: 0 }, '-=0.5').to(line2, { opacity: 0 }, `+=${shortPause}`);
+		tl.from(line3, { y: 20, opacity: 0 }).to(line3, { opacity: 0 }, `+=${shortPause}`);
+		tl.from(line4, { y: 20, opacity: 0 }).to(line4, { opacity: 0 }, `+=${longPause}`);
 
 		// Third Scene of Celebration
 		tl.to(video2, { opacity: 0, duration: 2 });
 		tl.to(video3, { opacity: 1, duration: 2.5 }, '<');
-		tl.from(line5, { y: 20, opacity: 0 }, '-=0.5').to(
-			line5,
-			{ opacity: 0 },
-			`+=${lineDisplayDuration}`
-		);
-		tl.from(line6, { y: 20, opacity: 0 }).to(line6, { opacity: 0 }, `+=${lineDisplayDuration + 1}`);
+		tl.from(line5, { y: 20, opacity: 0 }, '-=0.5').to(line5, { opacity: 0 }, `+=${shortPause}`);
+		tl.from(line6, { y: 20, opacity: 0 }).to(line6, { opacity: 0 }, `+=${shortPause}`);
+		tl.from(line7, { y: 20, opacity: 0 }).to(line7, { opacity: 0 }, `+=${shortPause - 0.5}`);
+		tl.from(line8, { y: 20, opacity: 0 }).to(line8, { opacity: 0 }, `+=${shortPause - 0.5}`);
+		tl.from(line9, { y: 20, opacity: 0 }).to(line9, { opacity: 0 }, `+=${longPause}`);
 
 		// This one is for black screen to some better things
 		tl.to(video3, { opacity: 0, duration: 2.5 });
 
 		// Climax Scene
-		tl.from(line7, { y: 20, opacity: 0 }, '-=0.5').to(
-			line7,
+		tl.from(line10, { y: 20, opacity: 0 }, '-=0.5').to(
+			line10,
 			{ opacity: 0 },
-			`+=${lineDisplayDuration - 1}`
+			`+=${longPause + 1}`
 		);
-		tl.from(line8, { y: 20, opacity: 0 }).to(line8, { opacity: 0 }, `+=${lineDisplayDuration + 2}`);
 
 		// The Final Title
-		tl.from(line9, { scale: 0.8, opacity: 0, duration: 2, ease: 'power2.out' });
-		tl.to({}, { duration: 4 });
-
-		tl.to({}, { duration: 4 });
+		tl.from(line11, { scale: 0.8, opacity: 0, duration: 2, ease: 'power2.out' });
+		tl.to({}, { duration: finalPause });
 	});
 </script>
 
@@ -111,19 +105,17 @@
 	<!-- Container for text (I swear I wrote this myself) -->
 	<div class="text-container relative z-10 flex h-full w-full items-center justify-center p-8">
 		<div class="max-w-4xl text-center text-3xl leading-tight font-bold md:text-5xl">
-			<span bind:this={line1} class="line">Around the world, fall is a season of endings.</span>
-			<span bind:this={line2} class="line">Of dried autumn leaves and pumpkin carvings.</span>
-			<span bind:this={line3} class="line">But where I come from...</span>
-			<span bind:this={line4} class="line">...it's nothing like that.</span>
-			<span bind:this={line5} class="line"
-				>We celebrate fall as a season of harvest, of culture, and of gathering.</span
-			>
-			<span bind:this={line6} class="line">A celebration of joy, of victory, and of hope.</span>
-			<span bind:this={line7} class="line">It is a promise...</span>
-			<span bind:this={line8} class="line"
-				>...that even after a million struggles, light will always find a way.</span
-			>
-			<span bind:this={line9} class="line text-amber-300">Welcome to Fall in India.</span>
+			<span bind:this={line1} class="line">For many, fall is a season of endings.</span>
+			<span bind:this={line2} class="line">But where I come from...</span>
+			<span bind:this={line3} class="line">...it is a season of hope.</span>
+			<span bind:this={line4} class="line">A season of joy, of harvest, of culture.</span>
+			<span bind:this={line5} class="line">It is a promise...</span>
+			<span bind:this={line6} class="line">...that even in the darkest, loneliest corners,</span>
+			<span bind:this={line7} class="line">light will find a way.</span>
+			<span bind:this={line8} class="line">To enlighten every corner,</span>
+			<span bind:this={line9} class="line">and every soul.</span>
+			<span bind:this={line10} class="line">A promise that we are never truly alone.</span>
+			<span bind:this={line11} class="line text-amber-300">Welcome to Fall in India.</span>
 		</div>
 	</div>
 
