@@ -13,4 +13,5 @@ body {
 	width: 100%;
 	/* This is crucial for your animation style to prevent any unwanted scrollbars */
 	overflow: hidden;
+	background-color: #0c0e11;
 }

@@ -9,7 +9,7 @@
 	let video2;
 	let video3;
 
-	let line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11;
+	let line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12;
 
 	function finishIntro() {
 		if (gsap.getProperty(overlay, 'opacity') === 0) return;
@@ -25,6 +25,8 @@
 
 	// The MAIN Animation black
 	onMount(() => {
+		gsap.set(overlay, { visibility: 'visible' });
+
 		const shortPause = 2; // for quick lines
 		const longPause = 3; // for important lines
 		const finalPause = 4; // for the very end
@@ -47,27 +49,24 @@
 		tl.to(video3, { opacity: 1, duration: 2.5 }, '<');
 		tl.from(line5, { y: 20, opacity: 0 }, '-=0.5').to(line5, { opacity: 0 }, `+=${shortPause}`);
 		tl.from(line6, { y: 20, opacity: 0 }).to(line6, { opacity: 0 }, `+=${shortPause}`);
-		tl.from(line7, { y: 20, opacity: 0 }).to(line7, { opacity: 0 }, `+=${shortPause - 0.5}`);
-		tl.from(line8, { y: 20, opacity: 0 }).to(line8, { opacity: 0 }, `+=${shortPause - 0.5}`);
-		tl.from(line9, { y: 20, opacity: 0 }).to(line9, { opacity: 0 }, `+=${longPause}`);
+		tl.from(line7, { y: 20, opacity: 0 }).to(line7, { opacity: 0 }, `+=${longPause}`);
 
 		// This one is for black screen to some better things
 		tl.to(video3, { opacity: 0, duration: 2.5 });
 
 		// Climax Scene
-		tl.from(line10, { y: 20, opacity: 0 }, '-=0.5').to(
-			line10,
-			{ opacity: 0 },
-			`+=${longPause + 1}`
-		);
+		tl.from(line8, { y: 20, opacity: 0 }).to(line8, { opacity: 0 }, `+=${longPause}`);
+		tl.from(line9, { y: 20, opacity: 0 }).to(line9, { opacity: 0 }, `+=${longPause}`);
+		tl.from(line10, { y: 20, opacity: 0 }).to(line10, { opacity: 0 }, `+=${longPause}`);
 
+		tl.from(line11, { y: 20, opacity: 0 }).to(line11, { opacity: 0 }, `+=${longPause + 1}`);
 		// The Final Title
-		tl.from(line11, { scale: 0.8, opacity: 0, duration: 2, ease: 'power2.out' });
+		tl.from(line12, { scale: 0.8, opacity: 0, duration: 2, ease: 'power2.out' });
 		tl.to({}, { duration: finalPause });
 	});
 </script>
 
-<div bind:this={overlay} class="fixed inset-0 z-50 bg-black font-inter text-white">
+<div bind:this={overlay} class="intro-overlay fixed inset-0 z-50 bg-black font-inter text-white">
 	<video
 		bind:this={video1}
 		class="absolute h-full w-full object-cover opacity-0"
@@ -108,14 +107,19 @@
 			<span bind:this={line1} class="line">For many, fall is a season of endings.</span>
 			<span bind:this={line2} class="line">But where I come from...</span>
 			<span bind:this={line3} class="line">...it is a season of hope.</span>
-			<span bind:this={line4} class="line">A season of joy, of harvest, of culture.</span>
+			<span bind:this={line4} class="line">A celebration of joy, of victory, of culture.</span>
 			<span bind:this={line5} class="line">It is a promise...</span>
 			<span bind:this={line6} class="line">...that even in the darkest, loneliest corners,</span>
-			<span bind:this={line7} class="line">light will find a way.</span>
-			<span bind:this={line8} class="line">To enlighten every corner,</span>
-			<span bind:this={line9} class="line">and every soul.</span>
-			<span bind:this={line10} class="line">A promise that we are never truly alone.</span>
-			<span bind:this={line11} class="line text-amber-300">Welcome to Fall in India.</span>
+			<span bind:this={line7} class="line">light will always find a way.</span>
+
+			<!-- The s"black screen" sequence -->
+			<span bind:this={line8} class="line">A promise that after a million struggles,</span>
+			<span bind:this={line9} class="line">good will always triumph over evil.</span>
+			<span bind:this={line10} class="line">And that in this shared light,</span>
+			<span bind:this={line11} class="line">you are never alone.</span>
+
+			<!-- The final title card -->
+			<span bind:this={line12} class="line text-amber-300">Welcome to Fall in India.</span>
 		</div>
 	</div>
 
@@ -128,6 +132,10 @@
 </div>
 
 <style>
+	.intro-overlay {
+		visibility: hidden;
+	}
+
 	.text-container {
 		position: relative;
 	}
