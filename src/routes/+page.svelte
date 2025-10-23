@@ -132,7 +132,11 @@
 	}
 </script>
 
-<main class="page-container snap-none bg-green-200">
+<main class:opacity-0={introVisible} class="page-container snap-none bg-green-200">
+	{#if introVisible}
+		<IntroOverlay on:finish={() => (introVisible = false)} />
+	{/if}
+
 	{#each timeline as event, i (event.id)}
 		<FestivalSection
 			{event}
