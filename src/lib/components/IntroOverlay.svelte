@@ -38,7 +38,7 @@
 		tl.to(video2, { opacity: 1, duration: 2.5 }, '<');
 		tl.from(line3, { opacity: 0, y: 20 }, '-=0.5');
 		tl.from(line4, { opacity: 0, y: 20 }, '+=1.5');
-		tl.to([line3, line4], { opacity: 0, y: 20 }, '+=2.5');
+		tl.to([line3, line4], { opacity: 0, duration: 1 }, '+=2.5');
 
 		// Third Scene of Celebration
 		tl.to(video2, { opacity: 0, duration: 2 });
@@ -49,7 +49,7 @@
 
 		// Climax Scene
 		tl.from(line7, { opacity: 0, y: 20 }, '+=0.5');
-		tl.from(line7, { opacity: 0, y: 20 }, '+=1');
+		tl.from(line8, { opacity: 0, y: 20 }, '+=1');
 		tl.to([line7, line8], { opacity: 0, duration: 1 }, '+=3.5');
 
 		// The Final Title
