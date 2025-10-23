@@ -10,11 +10,12 @@
 	let outerWrappers = [];
 	let innerWrappers = [];
 
-	onMount(() => {
+	let cleanUpAnimation = () => {};
+
+	function startMainAnimations() {
 		let currentIndex = -1;
 		let animating = false;
 
-		// Initialize wrap safely, now that we're in the browser
 		const wrap = gsap.utils.wrap(0, timeline.length);
 
 		// Define the core function here, where 'wrap' is guaranteed to exist
@@ -128,7 +129,7 @@
 		return () => {
 			if (observer) observer.kill();
 		};
-	});
+	}
 </script>
 
 <main class="page-container snap-none bg-green-200">
