@@ -13,6 +13,7 @@
 	let innerWrappers = [];
 	let introVisible = true;
 	let activeStoryFestival = null;
+	let isModalVisible = false;
 
 	let cleanupMainAnimation = () => {};
 
@@ -147,10 +148,14 @@
 
 	function handleShowStory(event) {
 		activeStoryFestival = event.detail.festival;
+		setTimeout(() => {
+			isModalVisible = true;
+		}, 100);
 	}
 
 	function handleCloseStory() {
 		activeStoryFestival = null;
+		isModalVisible = false;
 	}
 </script>
 
@@ -158,11 +163,15 @@
 	<IntroOverlay on:finish={() => (introVisible = false)} />
 {/if}
 
-{#if activeStoryFestival}
+{#if isModalVisible}
 	<StoryModal festival={activeStoryFestival} on:close={handleCloseStory} />
 {/if}
 
-<main class:opacity-0={introVisible} class="page-container snap-none bg-green-200">
+<main
+	class:opacity-0={introVisible}
+	class="page-container snap-none bg-green-200"
+	class:modal-open={activeStoryFestival != null}
+>
 	{#each timeline as event, i (event.id)}
 		<FestivalSection
 			{event}
@@ -173,3 +182,15 @@
 		/>
 	{/each}
 </main>
+
+<style>
+	main {
+		transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	main.modal-open {
+		opacity: 0.3;
+		transform: scale(0.97);
+		filter: blur(8px);
+	}
+</style>

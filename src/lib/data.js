@@ -81,13 +81,13 @@ export const timeline = [
 				title: 'An Epic, Retold',
 				content:
 					"We tell the story of Lord Rama's fourteen-year exile and his heroic battle against insurmountable odds. It's a story that teaches us about duty, honor, and the resilience of the human spirit in the face of struggle.",
-				image: '/images/story-ramlila.jpg'
+				image: '/images/story-dussehra-1.jpg'
 			},
 			{
 				title: 'The Fire of Liberation',
 				content:
 					'The festival climaxes with the burning of a giant effigy of the demon king Ravana. This is a collective, cathartic release. With a triumphant roar, we watch our struggles and negativities turn to ash, making way for a clean, victorious new beginning.',
-				image: '/images/story-ravana-fire.jpg'
+				image: '/images/story-dussehra-2.jpg'
 			}
 		]
 	},
