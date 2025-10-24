@@ -36,7 +36,7 @@
 
 					{#if event.story && event.story.length > 0}
 						<button
-							class="mt-8 rounded-lg bg-white/10 px-6 py-3 text-sm tracking-widest text-white uppercase backdrop-blur-sm transition-colors hover:bg-white/20"
+							class="discover-button mt-8 rounded-lg bg-white/10 px-6 py-3 text-sm tracking-widest text-white uppercase backdrop-blur-sm transition-colors hover:bg-white/20"
 							on:click={openStory}>Discover the Story</button
 						>
 					{/if}

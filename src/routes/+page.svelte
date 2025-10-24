@@ -65,6 +65,17 @@
 				);
 
 				tl.to(
+					currentSectionNode.querySelector('.discover-button'),
+					{
+						y: -50 * dFactor,
+						opacity: 0,
+						duration: 0.5,
+						ease: 'power2.in'
+					},
+					0.1
+				);
+
+				tl.to(
 					[outerWrappers[currentIndex], innerWrappers[currentIndex]],
 					{
 						yPercent: (i) => (i ? 100 * dFactor : -100 * dFactor)
@@ -86,7 +97,8 @@
 			gsap.set(
 				[
 					newSectionNode.querySelector('.section-heading'),
-					newSectionNode.querySelector('.section-description')
+					newSectionNode.querySelector('.section-description'),
+					newSectionNode.querySelector('.discover-button')
 				],
 				{ opacity: 1, y: 0 }
 			);
@@ -111,6 +123,16 @@
 					ease: 'power3.out'
 				},
 				0.5
+			);
+			tl.from(
+				newSectionNode.querySelector('.discover-button'),
+				{
+					y: 50 * dFactor,
+					opacity: 0,
+					duration: 0.8,
+					ease: 'power3.out'
+				},
+				0.6
 			);
 
 			currentIndex = index;
