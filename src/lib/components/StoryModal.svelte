@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	/**
 	 * @type {import('$lib/data').Festival}
@@ -52,7 +53,7 @@
 </script>
 
 <!-- Main Wrapper -->
-<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg">
+<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg" in:fade out:fade>
 	<!-- Background Wrapper -->
 	<div class="absolute inset-0">
 		{#if festival.story[currentSlideIndex].image}
@@ -69,7 +70,7 @@
 		>
 			<div class="w-full text-center">
 				{#key currentSlideIndex}
-					<h3 class="font-bold font-inter text-3xl mb-3">
+					<h3 class="mb-3 font-inter text-3xl font-bold">
 						{festival.story[currentSlideIndex].title}
 					</h3>
 					<p>
