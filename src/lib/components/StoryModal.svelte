@@ -50,3 +50,18 @@
 		}
 	}
 </script>
+
+<!-- Main Wrapper -->
+<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg">
+	<!-- Background Wrapper -->
+	<div class="absolute inset-0">
+		{#if festival.story[currentSlideIndex].image}
+			<div
+				class="absolute inset-0 h-full w-full bg-cover bg-center"
+				style="background-image: url({festival.story[currentSlideIndex].image});"
+			>
+				<div class="absolute inset-0 bg-black/50"></div>
+			</div>
+		{/if}
+	</div>
+</div>
