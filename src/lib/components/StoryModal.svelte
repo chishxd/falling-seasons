@@ -1,5 +1,13 @@
 <script>
+	import { createEventDispatcher, onMount } from 'svelte';
+
 	let currentSlideIndex = 0;
+
+	const dispatch = createEventDispatcher();
+
+	function closeModal() {
+		dispatch('close');
+	}
 
 	function prevSlide() {
 		if (currentSlideIndex !== 0) {
