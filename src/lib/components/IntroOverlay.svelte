@@ -9,6 +9,7 @@
 	let video2;
 	let video3;
 
+	let isReadyToPlay = false;
 	let line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12;
 
 	function finishIntro() {
@@ -23,10 +24,7 @@
 		});
 	}
 
-	// The MAIN Animation black
-	onMount(() => {
-		gsap.set(overlay, { visibility: 'visible' });
-
+	function startAnimation() {
 		const shortPause = 2; // for quick lines
 		const longPause = 3; // for important lines
 		const finalPause = 4; // for the very end
@@ -63,12 +61,30 @@
 		// The Final Title
 		tl.from(line12, { scale: 0.8, opacity: 0, duration: 2, ease: 'power2.out' });
 		tl.to({}, { duration: finalPause });
+	}
+
+	$: if (isReadyToPlay) {
+		startAnimation();
+	}
+
+	// The MAIN Animation black
+	onMount(() => {
+		gsap.set(overlay, { visibility: 'visible' });
+
+		if (video1 && video1.readyState >= 3) {
+			console.log('Video was ready from cache. Starting animation.');
+			isReadyToPlay = true;
+		}
 	});
 </script>
 
 <div bind:this={overlay} class="intro-overlay fixed inset-0 z-50 bg-black font-inter text-white">
 	<video
 		bind:this={video1}
+		on:loadeddata={() => {
+			console.log('Video loaded via event. Starting animation.');
+			isReadyToPlay = true;
+		}}
 		class="absolute h-full w-full object-cover opacity-0"
 		src="/videos/autumn.mp4"
 		autoplay
@@ -130,6 +146,12 @@
 		Skip Intro
 	</button>
 </div>
+
+{#if !isReadyToPlay}
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black">
+		<p class="animate-pulse text-lg font-medium text-white/50">Preparing the story...</p>
+	</div>
+{/if}
 
 <style>
 	.intro-overlay {

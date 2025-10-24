@@ -36,13 +36,7 @@ export const timeline = [
 		description:
 			'A vibrant celebration of new beginnings, marked by clay idols and the warm glow of lamps.',
 		icon: 'ganesha',
-		image: '/images/ganesh_chaturthi.jpg',
-		story: [
-			{
-				title: 'Story',
-				content: 'This festival is one of the Biggest Events in all of the India..'
-			}
-		]
+		image: '/images/ganesh_chaturthi.jpg'
 	},
 	{
 		id: 3,
