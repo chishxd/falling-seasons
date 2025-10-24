@@ -86,7 +86,7 @@
 			isReadyToPlay = true;
 		}}
 		class="absolute h-full w-full object-cover opacity-0"
-		src="/videos/autumn.mp4"
+		src="https://res.cloudinary.com/dk2kn3aeu/video/upload/v1761320746/autumn_n1seqy.mp4"
 		autoplay
 		muted
 		loop
@@ -96,7 +96,7 @@
 	<video
 		bind:this={video2}
 		class="absolute h-full w-full object-cover opacity-0"
-		src="/videos/monsoon.mp4"
+		src="https://res.cloudinary.com/dk2kn3aeu/video/upload/v1761320760/monsoon_psreha.mp4"
 		autoplay
 		muted
 		loop
@@ -106,7 +106,7 @@
 	<video
 		bind:this={video3}
 		class="absolute h-full w-full object-cover opacity-0"
-		src="/videos/celebration.mp4"
+		src="https://res.cloudinary.com/dk2kn3aeu/video/upload/v1761320753/celebration_iy8np5.mp4"
 		autoplay
 		muted
 		loop
@@ -125,12 +125,14 @@
 			<span bind:this={line3} class="line">...it is a season of hope.</span>
 			<span bind:this={line4} class="line">A celebration of joy, of victory, of culture.</span>
 			<span bind:this={line5} class="line">It is a promise...</span>
-			<span bind:this={line6} class="line">...that even in the darkest, loneliest corners,</span>
-			<span bind:this={line7} class="line">light will always find a way.</span>
+			<span bind:this={line6} class="line">...that even if it takes a million struggles,</span>
+			<span bind:this={line7} class="line">good will always triumph over evil.</span>
 
 			<!-- The s"black screen" sequence -->
-			<span bind:this={line8} class="line">A promise that after a million struggles,</span>
-			<span bind:this={line9} class="line">good will always triumph over evil.</span>
+			<span bind:this={line8} class="line"
+				>A promise that even in the darkest, loneliest corners,</span
+			>
+			<span bind:this={line9} class="line">light will always find a way.</span>
 			<span bind:this={line10} class="line">And that in this shared light,</span>
 			<span bind:this={line11} class="line">you are never alone.</span>
 
