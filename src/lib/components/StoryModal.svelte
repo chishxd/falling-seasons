@@ -60,7 +60,7 @@
 				class="absolute inset-0 h-full w-full bg-cover bg-center"
 				style="background-image: url({festival.story[currentSlideIndex].image});"
 			>
-				<div class="absolute inset-0 bg-black/50"></div>
+				<div class="absolute inset-0 bg-black/60"></div>
 			</div>
 		{/if}
 
@@ -69,7 +69,7 @@
 		>
 			<div class="w-full text-center">
 				{#key currentSlideIndex}
-					<h3>
+					<h3 class="font-bold font-inter text-3xl mb-3">
 						{festival.story[currentSlideIndex].title}
 					</h3>
 					<p>
