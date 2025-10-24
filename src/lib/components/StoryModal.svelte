@@ -1,9 +1,35 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
+
+	export let festival;
 
 	let currentSlideIndex = 0;
 
 	const dispatch = createEventDispatcher();
+
+	/**
+	 * Function to handle key events
+	 * @param {KeyboardEvent} e - Event Handles
+	 */
+	function handleKeyDown(e) {
+		if (e.key === 'ArrowLeft') {
+			prevSlide();
+		}
+		if (e.key === 'ArrowRight') {
+			nextSlide();
+		}
+		if (e.key === 'Escape') {
+			closeModal();
+		}
+	}
+
+	onMount(() => {
+		window.addEventListener('keydown', handleKeyDown);
+	});
+
+	onDestroy(() => {
+		window.removeEventListener('keydown', handleKeyDown);
+	});
 
 	function closeModal() {
 		dispatch('close');
@@ -13,15 +39,11 @@
 		if (currentSlideIndex !== 0) {
 			currentSlideIndex--;
 		}
-		return;
 	}
 
 	function nextSlide() {
 		if (currentSlideIndex < festival.story.length - 1) {
 			currentSlideIndex++;
 		}
-		return;
 	}
-
-	export let festival;
 </script>
