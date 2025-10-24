@@ -2,12 +2,11 @@
 
 **Reimagining 'Fall'**: An animated journey through India's vibrant festive season.
 Made with ❤️ for [HackClub](hackclub.siege.com) <br><br>
-Demo Link: [todo: add live site link]
+Demo Link: https://falling-seasons.vercel.app/
 
 ![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=for-the-badge&logo=svelte&logoColor=white)![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-<!-- [image] -->
-
+![screenshot of diwali section on website](screenshot.png)
 ---
 
 ## Introduction
