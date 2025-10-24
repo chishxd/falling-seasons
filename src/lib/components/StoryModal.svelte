@@ -63,5 +63,36 @@
 				<div class="absolute inset-0 bg-black/50"></div>
 			</div>
 		{/if}
+
+		<div
+			class="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-white"
+		>
+			<div class="w-full text-center">
+				{#key currentSlideIndex}
+					<h3>
+						{festival.story[currentSlideIndex].title}
+					</h3>
+					<p>
+						{festival.story[currentSlideIndex].content}
+					</p>
+				{/key}
+			</div>
+
+			<div class="absolute bottom-8 flex gap-6">
+				<button disabled={currentSlideIndex === 0} on:click={prevSlide}>Previous</button>
+				<button disabled={currentSlideIndex === festival.story.length - 1} on:click={nextSlide}
+					>Next
+				</button>
+			</div>
+
+			<!-- Progress Dots -->
+			<div class="absolute bottom-24 flex gap-3">
+				{#each festival.story as _, i}
+					<div
+						class="h-2 w-2 rounded-full {i === currentSlideIndex ? 'bg-white' : 'bg-white/40'}"
+					></div>
+				{/each}
+			</div>
+		</div>
 	</div>
 </div>
