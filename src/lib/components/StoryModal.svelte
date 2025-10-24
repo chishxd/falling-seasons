@@ -54,46 +54,55 @@
 
 <!-- Main Wrapper -->
 <div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg" in:fade out:fade>
-	<!-- Background Wrapper -->
-	<div class="absolute inset-0">
-		{#if festival.story[currentSlideIndex].image}
+		<!-- Background Wrapper -->
+		<div class="absolute inset-0">
+			{#if festival.story[currentSlideIndex].image}
+				<div
+					class="absolute inset-0 h-full w-full bg-cover bg-center"
+					style="background-image: url({festival.story[currentSlideIndex].image});"
+				>
+					<div class="absolute inset-0 bg-black/60"></div>
+				</div>
+			{/if}
+
 			<div
-				class="absolute inset-0 h-full w-full bg-cover bg-center"
-				style="background-image: url({festival.story[currentSlideIndex].image});"
+				class="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-white"
 			>
-				<div class="absolute inset-0 bg-black/60"></div>
-			</div>
-		{/if}
+            <!-- --- ADD THIS BUTTON --- -->
+            <button 
+                on:click={closeModal} 
+                class="absolute top-6 right-8 text-4xl font-light text-white/70 transition-transform hover:scale-125 hover:text-white"
+                aria-label="Close story modal"
+            >
+                &times; <!-- This is the HTML entity for the '×' multiplication sign -->
+            </button>
+            <!-- --- END OF ADDED BUTTON --- -->
+				<div class="w-full text-center">
+					{#key currentSlideIndex}
+						<h3 class="mb-3 font-inter text-3xl font-bold">
+							{festival.story[currentSlideIndex].title}
+						</h3>
+						<p>
+							{festival.story[currentSlideIndex].content}
+						</p>
+					{/key}
+				</div>
 
-		<div
-			class="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-white"
-		>
-			<div class="w-full text-center">
-				{#key currentSlideIndex}
-					<h3 class="mb-3 font-inter text-3xl font-bold">
-						{festival.story[currentSlideIndex].title}
-					</h3>
-					<p>
-						{festival.story[currentSlideIndex].content}
-					</p>
-				{/key}
-			</div>
+				<div class="absolute bottom-8 flex gap-6">
+					<button disabled={currentSlideIndex === 0} on:click={prevSlide}>Previous</button>
+					<button disabled={currentSlideIndex === festival.story.length - 1} on:click={nextSlide}
+						>Next
+					</button>
+				</div>
 
-			<div class="absolute bottom-8 flex gap-6">
-				<button disabled={currentSlideIndex === 0} on:click={prevSlide}>Previous</button>
-				<button disabled={currentSlideIndex === festival.story.length - 1} on:click={nextSlide}
-					>Next
-				</button>
-			</div>
-
-			<!-- Progress Dots -->
-			<div class="absolute bottom-24 flex gap-3">
-				{#each festival.story as _, i}
-					<div
-						class="h-2 w-2 rounded-full {i === currentSlideIndex ? 'bg-white' : 'bg-white/40'}"
-					></div>
-				{/each}
+				<!-- Progress Dots -->
+				<div class="absolute bottom-24 flex gap-3">
+					{#each festival.story as _, i}
+						<div
+							class="h-2 w-2 rounded-full {i === currentSlideIndex ? 'bg-white' : 'bg-white/40'}"
+						></div>
+					{/each}
+				</div>
 			</div>
 		</div>
-	</div>
 </div>
