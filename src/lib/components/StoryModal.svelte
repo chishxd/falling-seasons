@@ -1,6 +1,9 @@
 <script>
 	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 
+	/**
+	 * @type {import('$lib/data').Festival}
+	 */
 	export let festival;
 
 	let currentSlideIndex = 0;
