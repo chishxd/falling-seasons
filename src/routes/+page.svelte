@@ -6,11 +6,13 @@
 	import { onMount, tick } from 'svelte';
 	import Observer from 'gsap/Observer';
 	import IntroOverlay from '$lib/components/IntroOverlay.svelte';
+	import StoryModal from '$lib/components/StoryModal.svelte';
 
 	let sections = [];
 	let outerWrappers = [];
 	let innerWrappers = [];
 	let introVisible = true;
+	let activeStoryFestival = null;
 
 	let cleanupMainAnimation = () => {};
 
@@ -142,10 +144,22 @@
 			cleanupMainAnimation();
 		};
 	});
+
+	function handleShowStory(event) {
+		activeStoryFestival = event.detail.festival;
+	}
+
+	function handleCloseStory() {
+		activeStoryFestival = null;
+	}
 </script>
 
 {#if introVisible}
 	<IntroOverlay on:finish={() => (introVisible = false)} />
+{/if}
+
+{#if activeStoryFestival}
+	<StoryModal festival={activeStoryFestival} on:close={handleCloseStory} />
 {/if}
 
 <main class:opacity-0={introVisible} class="page-container snap-none bg-green-200">
@@ -155,6 +169,7 @@
 			bind:this={sections[i]}
 			bind:outerWrapper={outerWrappers[i]}
 			bind:innerWrapper={innerWrappers[i]}
+			on:showstory={handleShowStory}
 		/>
 	{/each}
 </main>

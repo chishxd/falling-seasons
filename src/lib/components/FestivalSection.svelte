@@ -1,11 +1,17 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 	/**
 	 * @type {import{'../data'}.Festival}
 	 */
 	export let event;
-
 	export let outerWrapper;
 	export let innerWrapper;
+
+	function openStory() {
+		dispatch('showstory', { festival: event });
+	}
 
 	let sectionNode; // This will bind to the <section>
 	export function getNode() {
@@ -27,6 +33,13 @@
 				<div class="mx-auto max-w-2xl text-center text-white">
 					<h2 class="section-heading mb-4 text-4xl font-bold md:text-6xl">{event.season}</h2>
 					<p class="section-description text-lg md:text-xl">{event.description}</p>
+
+					{#if event.story && event.story.length > 0}
+						<button
+							class="mt-8 rounded-lg bg-white/10 px-6 py-3 text-sm tracking-widest text-white uppercase backdrop-blur-sm transition-colors hover:bg-white/20"
+							on:click={openStory}>Discover the Story</button
+						>
+					{/if}
 				</div>
 			</div>
 		</div>
